@@ -11,7 +11,7 @@
             parkingTime = int.Parse(Console.ReadLine());
             parkingTime = parkingTime / 60;
             parkingCost = 4 + (2 * (0.5 +(Math.Round(parkingTime,MidpointRounding.AwayFromZero))));
-            Console.WriteLine($"{parkingCost}, {parkingTime}");
+            Console.WriteLine($"{parkingCost}, {parkingTime}"); 
             Console.WriteLine(Math.Round(parkingTime, MidpointRounding.AwayFromZero));
             if (parkingTime < 1)
             {
