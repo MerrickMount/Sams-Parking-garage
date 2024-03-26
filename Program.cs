@@ -1,4 +1,6 @@
-﻿namespace Sams_Parking_garage
+﻿using System.Threading.Tasks.Dataflow;
+
+namespace Sams_Parking_garage
 {
     internal class Program
     {
@@ -7,45 +9,53 @@
             
             double parkingTime;
             double parkingCost;
-            Console.WriteLine("Hello, please state the parking total time");
-            parkingTime = int.Parse(Console.ReadLine());
-            parkingTime = parkingTime / 60;
-            parkingCost = 4 + (2 * (0.5 +(Math.Round(parkingTime,MidpointRounding.AwayFromZero))));
-            Console.WriteLine($"{parkingCost}, {parkingTime}"); 
-            Console.WriteLine(Math.Round(parkingTime, MidpointRounding.AwayFromZero));
-            if (parkingTime < 1)
+            Console.WriteLine("Hello, please state the parking total time in minutes");
+            while (!double.TryParse(Console.ReadLine(), out parkingTime))
             {
-                Console.WriteLine($"Your parking cost is {parkingCost}");
+                Console.WriteLine("This is not valid input. Please enter an integer value: ");
             }
-            if (parkingTime <= 2 && parkingTime >= 1)
+            parkingCost = 4;
+            if (parkingTime < 60)
             {
-                Console.WriteLine($"Your parking cost is {parkingCost}");
+                parkingCost += 2;
+                Console.WriteLine($"Your parking cost is {parkingCost.ToString("C")}");
             }
-            if (parkingTime <= 3 && parkingTime >= 2)
+            if (parkingTime <= 120 && parkingTime >= 60)
             {
-                Console.WriteLine($"Your parking cost is {parkingCost}");
+                parkingCost += 4;
+                Console.WriteLine($"Your parking cost is {parkingCost.ToString("C")}");
             }
-            if (parkingTime <= 4 && parkingTime >= 3)
+            if (parkingTime <= 180 && parkingTime >= 120)
             {
-                Console.WriteLine($"Your parking cost is {parkingCost}");
+                parkingCost += 6;
+                Console.WriteLine($"Your parking cost is {parkingCost.ToString("C")}");
             }
-            if (parkingTime <= 5 && parkingTime >= 4)
+            if (parkingTime <= 240 && parkingTime >= 180)
             {
-                Console.WriteLine($"Your parking cost is {parkingCost}");
+                parkingCost += 8;
+                Console.WriteLine($"Your parking cost is {parkingCost.ToString("C")}");
             }
-            if (parkingTime <= 6 && parkingTime >= 5)
+            if (parkingTime <= 300 && parkingTime >= 240)
             {
-                Console.WriteLine($"Your parking cost is {parkingCost}");
+                parkingCost += 10;
+                Console.WriteLine($"Your parking cost is {parkingCost.ToString("C")}");
             }
-            if (parkingTime <= 7 && parkingTime >= 6)
+            if (parkingTime <= 360 && parkingTime >= 300)
             {
-                Console.WriteLine($"Your parking cost is {parkingCost}");
+                parkingCost += 12;
+                Console.WriteLine($"Your parking cost is {parkingCost.ToString("C")}");
             }
-            if (parkingTime <= 8 && parkingTime >= 7)
+            if (parkingTime <= 420 && parkingTime >= 360)
             {
-                Console.WriteLine($"Your parking cost is {parkingCost}");
+                parkingCost += 14;
+                Console.WriteLine($"Your parking cost is {parkingCost.ToString("C")}");
             }
-            if (parkingTime > 8)
+            if (parkingTime <= 480 && parkingTime >= 420)
+            {
+                parkingCost += 16;
+                Console.WriteLine($"Your parking cost is {parkingCost.ToString("C")}");
+            }
+            if (parkingTime > 480)
             {
                 Console.WriteLine("this is not an applicable time");
             }
